@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import backgroundImage from "./images/background-3.webp";
 
 const NewsSearch = () => {
   const [searchTitle, setSearchTitle] = useState("");
@@ -52,75 +53,83 @@ const NewsSearch = () => {
   };
 
   return (
-    <div className="news-search-container">
-      <h1 className="news-search-title">News Search</h1>
+    <div
+      className="backgroundStyle"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="overlayStyle"></div>
+      <div className="contentStyle">
+        <div className="news-search-container">
+          <h1 className="news-search-title">News Search</h1>
 
-      <div className="news-search-inputs">
-        {/* Search input */}
-        <input
-          type="text"
-          className="news-search-input"
-          placeholder="Search news by title"
-          value={searchTitle}
-          onChange={(e) => setSearchTitle(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
+          <div className="news-search-inputs">
+            {/* Search input */}
+            <input
+              type="text"
+              className="news-search-input"
+              placeholder="Search news by title"
+              value={searchTitle}
+              onChange={(e) => setSearchTitle(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
 
-        {/* Earliest date input */}
-        <input
-          type="date"
-          className="news-search-date"
-          value={earliestDate}
-          onChange={(e) => setEarliestDate(e.target.value)}
-        />
+            {/* Earliest date input */}
+            <input
+              type="date"
+              className="news-search-date"
+              value={earliestDate}
+              onChange={(e) => setEarliestDate(e.target.value)}
+            />
 
-        {/* Latest date input */}
-        <input
-          type="date"
-          className="news-search-date"
-          value={latestDate}
-          onChange={(e) => setLatestDate(e.target.value)}
-        />
+            {/* Latest date input */}
+            <input
+              type="date"
+              className="news-search-date"
+              value={latestDate}
+              onChange={(e) => setLatestDate(e.target.value)}
+            />
 
-        {/* Search button */}
-        <button className="news-search-button" onClick={fetchNews}>
-          Search
-        </button>
-      </div>
+            {/* Search button */}
+            <button className="news-search-button" onClick={fetchNews}>
+              Search
+            </button>
+          </div>
 
-      {error && <p className="news-search-error">Error: {error}</p>}
+          {error && <p className="news-search-error">Error: {error}</p>}
 
-      {/* News results */}
-      <div className="news-results">
-        {newsData.length > 0 ? (
-          newsData.map((newsItem) => (
-            <div key={newsItem.id} className="news-item">
-              <h3 className="news-item-title">{newsItem.title}</h3>
+          {/* News results */}
+          <div className="news-results">
+            {newsData.length > 0 ? (
+              newsData.map((newsItem) => (
+                <div key={newsItem.id} className="news-item">
+                  <h3 className="news-item-title">{newsItem.title}</h3>
 
-              {/* Display source as the domain name from the URL */}
-              <p className="news-item-source">
-                Source: {getDomainName(newsItem.url)}
-              </p>
+                  {/* Display source as the domain name from the URL */}
+                  <p className="news-item-source">
+                    Source: {getDomainName(newsItem.url)}
+                  </p>
 
-              <p className="news-item-summary">{newsItem.summary}</p>
-              <img
-                src={newsItem.image}
-                alt={newsItem.title}
-                className="news-item-image"
-              />
-              <a
-                href={newsItem.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="news-item-link"
-              >
-                Read more
-              </a>
-            </div>
-          ))
-        ) : (
-          <p className="news-no-results">No news found</p>
-        )}
+                  <p className="news-item-summary">{newsItem.summary}</p>
+                  <img
+                    src={newsItem.image}
+                    alt={newsItem.title}
+                    className="news-item-image"
+                  />
+                  <a
+                    href={newsItem.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="news-item-link"
+                  >
+                    Read more
+                  </a>
+                </div>
+              ))
+            ) : (
+              <p className="news-no-results">No news found</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
