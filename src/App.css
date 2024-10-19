@@ -75,6 +75,12 @@ body {
   box-shadow: 5px 5px 5px rgba(20, 7, 7, 0.3); /* Cast shadow */
 }
 
+.logged-in-user-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .user-profile-card > p {
   margin: 0;
   padding: 15px;

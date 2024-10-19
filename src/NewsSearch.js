@@ -24,6 +24,7 @@ const NewsSearch = () => {
     // Using full domain names for news sources
     const newsSources =
       "https://www.cnn.com/,https://www.npr.org/,https://www.bbc.com/,https://abcnews.go.com/,https://www.cbsnews.com/,https://www.nbcnews.com/,https://www.foxnews.com/";
+    //const url = `https://api.apilayer.com/world_news/search-news?news-sources=${encodeURIComponent(newsSources)}&max-sentiment=1&sort=sentiment&sort-direction=desc`;
 
     fetch(
       `https://api.apilayer.com/world_news/search-news?text=${encodeURIComponent(
@@ -70,7 +71,7 @@ const NewsSearch = () => {
               placeholder="Search news by title"
               value={searchTitle}
               onChange={(e) => setSearchTitle(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyUp={handleKeyPress}
             />
 
             {/* Earliest date input */}
