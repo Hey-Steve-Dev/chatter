@@ -105,7 +105,7 @@ body {
   font-size: 22px;
   font-weight: bold;
   color: rgb(73, 60, 43);
-  margin-bottom: 10px;
+
   margin-top: 10px;
 }
 .user-dob,
@@ -132,10 +132,14 @@ body {
 
 .user-profile-board {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Dynamically adjusts number of columns */
   gap: 10px; /* Adds space between grid items */
   padding: 20px; /* Adds padding around the grid */
-  margin-top: 200px;
+  margin-top: 20px;
+  justify-items: center;
 }
 
 /* Container */
@@ -365,4 +369,147 @@ body {
   color: #fff;
   text-align: center;
   padding-top: 10vh;
+}
+
+.conversationBoard {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* Online/Offline indicator styles */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status-indicator.online::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: green;
+  margin-right: 8px;
+  animation: pulse 2s infinite; /* Add slow pulse animation */
+}
+
+.status-indicator.offline::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: grey;
+  margin-right: 8px;
+}
+
+/* Slow pulse animation for online status */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Flex container for the status and props badge */
+.status-props-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%; /* Ensures both elements take full width */
+  margin-bottom: 10px;
+}
+
+/* Online/Offline indicator styles */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status-indicator.online::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: green;
+  margin-right: 8px;
+  animation: pulse 2s infinite; /* Add slow pulse animation */
+}
+
+.status-indicator.offline::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: grey;
+  margin-right: 8px;
+}
+
+/* Slow pulse animation for online status */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Props Badge */
+.props-badge {
+  background-color: lightblue;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Search input field */
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.conversationNavbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  margin-bottom: 20px;
+}
+
+/* Country dropdown */
+.country-dropdown {
+  width: 300px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: white;
 }

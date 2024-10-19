@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const FetchProfile = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log("fetch profile");
 
   useEffect(() => {
     // Fetch data from the RandomUser API
